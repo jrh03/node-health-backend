@@ -4,7 +4,7 @@ import {getPatientById} from "../Models/FHIRResource/Patient";
 import {getPatientByAuth} from "../Models/Patient_Login";
 import {CurrentPatientModel} from "../Models/Current_Patient";
 
-export const checkin = async (req: express.Request, res: express.Response)=>  {
+export const checkInPatient = async (req: express.Request, res: express.Response)=>  {
     try {
         const {CheckInTime, Hospital, Score} = req.body;
         // @ts-ignore

@@ -1,8 +1,8 @@
 import express from "express";
 import {checkJwt} from "../middlewares/auth0";
 import {requiredScopes} from "express-oauth2-jwt-bearer";
-import {waitinglist} from "../controllers/waitinglist";
-import {available_staff} from "../controllers/available_staff";
+import {waitingPatientsAtHospital} from "../controllers/waitingPatientsAtHospital";
+import {availableStaffAtHospital} from "../controllers/AvailableStaffAtHospital";
 
 
 const checkScopes = requiredScopes('read:staff');
@@ -11,7 +11,7 @@ const checkScopes = requiredScopes('read:staff');
 export default (router: express.Router) => {
     router.post('/waiting', checkJwt, checkScopes, async (req, res) => {
         try {
-            await waitinglist(req, res);
+            await waitingPatientsAtHospital(req, res);
         } catch (error) {
             // Make sure to catch any errors and respond appropriately
             console.error(error);
